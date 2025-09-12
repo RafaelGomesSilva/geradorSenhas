@@ -1,5 +1,4 @@
-
-import java.util.InputMismatchException;
+import org.apache.commons.lang3.RandomStringUtils;
 import java.util.Scanner;
 import java.util.Collections;
 import java.util.List;
@@ -13,8 +12,8 @@ import java.util.stream.Collectors;
 public class GeradorDeSenhas {
 
     // Define os conjuntos de caracteres que serão utilizados na senha
-    private static final String LETRAS_MAIUSCULAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private static final String LETRAS_MINUSCULAS = "abcdefghijklmnopqrstuvwxyz";
+    private static final String LETRAS_MAIUSCULAS = "ABC";
+    private static final String LETRAS_MINUSCULAS = "abc";
     private static final String NUMEROS = "0123456789";
     private static final String SIMBOLOS_ESPECIAIS = "!@#$%^&*()-_=+<>?";
 
@@ -43,7 +42,7 @@ public class GeradorDeSenhas {
             System.out.println("\nSenha gerada com sucesso!");
             System.out.println("Sua nova senha é: " + senhaGerada);
 
-        } catch (InputMismatchException e) {
+        } catch (java.util.InputMismatchException e) {
             System.err.println("\nErro: Entrada inválida. Por favor, insira um número inteiro.");
         } finally {
             scanner.close();
@@ -66,18 +65,17 @@ public class GeradorDeSenhas {
 
         // Gera um caractere aleatório de cada categoria para garantir a complexidade
         StringBuilder senhaInicial = new StringBuilder();
-        Math RandomStringUtils = null;
-        senhaInicial.append(RandomStringUtils.random());
-        senhaInicial.append(RandomStringUtils.random());
-        senhaInicial.append(RandomStringUtils.random());
-        senhaInicial.append(RandomStringUtils.random());
+        senhaInicial.append(RandomStringUtils.random(1, LETRAS_MAIUSCULAS));
+        senhaInicial.append(RandomStringUtils.random(1, LETRAS_MINUSCULAS));
+        senhaInicial.append(RandomStringUtils.random(1, NUMEROS));
+        senhaInicial.append(RandomStringUtils.random(1, SIMBOLOS_ESPECIAIS));
 
         // Combina todos os tipos de caracteres para o restante da senha
         String caracteresCombinados = LETRAS_MAIUSCULAS + LETRAS_MINUSCULAS + NUMEROS + SIMBOLOS_ESPECIAIS;
 
         // Gera o restante da senha
         int comprimentoRestante = comprimento - 4;
-        senhaInicial.append(RandomStringUtils.random());
+        senhaInicial.append(RandomStringUtils.random(comprimentoRestante, caracteresCombinados));
 
         // Embaralha os caracteres da senha para que os primeiros quatro não sejam sempre previsíveis
         List<Character> caracteres = senhaInicial.chars()
