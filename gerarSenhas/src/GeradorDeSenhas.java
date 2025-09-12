@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 public class GeradorDeSenhas {
 
     // Define os conjuntos de caracteres que serão utilizados na senha
-    private static final String LETRAS_MAIUSCULAS = "ABC";
-    private static final String LETRAS_MINUSCULAS = "abc";
+    private static final String LETRAS_MAIUSCULAS = "ABCDEFGHIJKLMNOPQRSTUVWYXZ";
+    private static final String LETRAS_MINUSCULAS = "abcdefghijklmnopqrstuvwyxz";
     private static final String NUMEROS = "0123456789";
     private static final String SIMBOLOS_ESPECIAIS = "!@#$%^&*()-_=+<>?";
 
